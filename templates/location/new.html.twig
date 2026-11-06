@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Location{% endblock %}
+
+{% block body %}
+    <main class="container py-4">
+        <h1>Create new Location</h1>
+
+        {{ include('location/_form.html.twig') }}
+
+        <a class="btn btn-outline-secondary my-2" href="{{ path('app_location_index') }}">back to list</a>
+    </main>
+{% endblock %}

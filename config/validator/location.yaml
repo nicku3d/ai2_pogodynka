@@ -1,0 +1,17 @@
+App\Entity\Location:
+    properties:
+        id:
+            - IsNull: { groups: [create] }
+            - NotNull: { groups: [edit] }
+        city:
+            - NotBlank: ~
+            - Length: { max: 255 }
+        country:
+            - NotBlank: ~
+            - Length: { exactly: 2 }
+        latitude:
+            - NotBlank: ~
+            - Range: { min: -90, max: 90 }
+        longitude:
+            - NotBlank: ~
+            - Range: { min: -90, max: 90 }

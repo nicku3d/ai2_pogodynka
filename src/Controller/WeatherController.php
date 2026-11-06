@@ -18,7 +18,7 @@ final class WeatherController extends AbstractController
         ]);
     }
 
-    #[Route('/weather/{country}/{city}', name: 'app_weather')]
+    #[Route('/weather/{country}/{city}', name: 'app_weather_city')]
     public function city(
         #[MapEntity(mapping: ['country' => 'country', 'city' => 'city'])] Location $location,
         MeasurementRepository $repository

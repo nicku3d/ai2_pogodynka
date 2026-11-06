@@ -1,0 +1,13 @@
+App\Entity\Measurement:
+    properties:
+        id:
+            - IsNull: { groups: [create] }
+            - NotNull: { groups: [edit] }
+        location:
+            - NotNull: ~
+        date:
+            - NotNull: ~
+        celsius:
+            - NotBlank: ~
+            - Regex: { pattern: '/^-?\d+$/', message: 'Enter a whole number.' }
+            - Range: { min: -90, max: 60, notInRangeMessage: 'Enter a temperature between {{ min }} and {{ max }} °C.' }

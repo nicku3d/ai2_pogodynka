@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Measurement{% endblock %}
+
+{% block body %}
+    <main class="container py-4">
+        <h1>Create new Measurement</h1>
+
+        {{ include('measurement/_form.html.twig') }}
+
+        <a class="btn btn-outline-secondary my-2" href="{{ path('app_measurement_index') }}">back to list</a>
+    </main>
+{% endblock %}

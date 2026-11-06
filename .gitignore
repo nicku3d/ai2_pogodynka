@@ -13,3 +13,4 @@
 /.phpunit.cache/
 ###< phpunit/phpunit ###
 .idea
+.DS_Store
