@@ -22,8 +22,12 @@
                     <td>{{ measurement.date ? measurement.date|date('Y-m-d') : '' }}</td>
                     <td>{{ measurement.celsius }}</td>
                     <td>
-                        <a class="btn btn-outline-secondary" href="{{ path('app_measurement_show', {'id': measurement.id}) }}">show</a>
-                        <a class="btn btn-outline-primary" href="{{ path('app_measurement_edit', {'id': measurement.id}) }}">edit</a>
+                        {% if is_granted('ROLE_MEASUREMENT_SHOW') %}
+                            <a class="btn btn-outline-secondary" href="{{ path('app_measurement_show', {'id': measurement.id}) }}">show</a>
+                        {% endif %}
+                        {% if is_granted('ROLE_MEASUREMENT_EDIT') %}
+                            <a class="btn btn-outline-primary" href="{{ path('app_measurement_edit', {'id': measurement.id}) }}">edit</a>
+                        {% endif %}
                     </td>
                 </tr>
             {% else %}
@@ -34,6 +38,8 @@
             </tbody>
         </table>
 
-        <a class="btn btn-primary" href="{{ path('app_measurement_new') }}">Create new</a>
+        {% if is_granted('ROLE_MEASUREMENT_NEW') %}
+            <a class="btn btn-primary" href="{{ path('app_measurement_new') }}">Create new</a>
+        {% endif %}
     </main>
 {% endblock %}
