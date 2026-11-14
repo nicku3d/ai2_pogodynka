@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Open-Meteo{% endblock %}
+
+{% block body %}
+    <main class="container py-4">
+        <h1>Weather Forecast</h1>
+
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button class="btn btn-primary" type="submit">Submit</button>
+        {{ form_end(form) }}
+
+        {% if weather_data %}
+            <h2>Data from Open Meteo</h2>
+            <table class="table table-striped mt-4">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Maximum temperature (°C)</th>
+                        <th>Minimum temperature (°C)</th>
+                        <th>Precipitation (mm)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for index, date in weather_data.daily.time %}
+                        <tr>
+                            <td>{{ date }}</td>
+                            <td>{{ weather_data.daily.temperature_2m_max[index] }}</td>
+                            <td>{{ weather_data.daily.temperature_2m_min[index] }}</td>
+                            <td>{{ weather_data.daily.precipitation_sum[index] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </main>
+{% endblock %}
